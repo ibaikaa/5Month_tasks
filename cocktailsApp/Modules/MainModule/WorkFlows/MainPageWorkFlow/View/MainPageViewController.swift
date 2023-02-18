@@ -10,5 +10,6 @@ import UIKit
 class MainPageViewController: UIViewController {
     override func loadView() {
         super.loadView()
+        NetworkManager.shared.getCocktails()
     }
 }
