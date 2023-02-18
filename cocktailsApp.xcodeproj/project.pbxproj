@@ -22,6 +22,7 @@
 		8C4A0F7529A14D320008E663 /* UIImageExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C4A0F7429A14D310008E663 /* UIImageExtension.swift */; };
 		8C4A0F7829A14DDA0008E663 /* MainTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C4A0F7729A14DDA0008E663 /* MainTabBarController.swift */; };
 		8C4A0F7C29A168620008E663 /* Drinks.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C4A0F7B29A168620008E663 /* Drinks.swift */; };
+		8C4A0F7E29A171090008E663 /* MainViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C4A0F7D29A171090008E663 /* MainViewModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -43,6 +44,7 @@
 		8C4A0F7429A14D310008E663 /* UIImageExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIImageExtension.swift; sourceTree = "<group>"; };
 		8C4A0F7729A14DDA0008E663 /* MainTabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTabBarController.swift; sourceTree = "<group>"; };
 		8C4A0F7B29A168620008E663 /* Drinks.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Drinks.swift; sourceTree = "<group>"; };
+		8C4A0F7D29A171090008E663 /* MainViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewModel.swift; sourceTree = "<group>"; };
 		DA70607590BC910FB292027A /* Pods-cocktailsApp.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-cocktailsApp.debug.xcconfig"; path = "Target Support Files/Pods-cocktailsApp/Pods-cocktailsApp.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -314,6 +316,7 @@
 		8C4A0F6629A14C2B0008E663 /* ViewModel */ = {
 			isa = PBXGroup;
 			children = (
+				8C4A0F7D29A171090008E663 /* MainViewModel.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -505,6 +508,7 @@
 				8C4A0F6A29A14C660008E663 /* MainPageViewController.swift in Sources */,
 				8C4A0F3829A14AD70008E663 /* SceneDelegate.swift in Sources */,
 				8C4A0F6E29A14C930008E663 /* AddDrinkViewController.swift in Sources */,
+				8C4A0F7E29A171090008E663 /* MainViewModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

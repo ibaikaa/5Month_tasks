@@ -10,7 +10,7 @@ enum ApiType {
     case fetchDrinksByName, fetchDrinksByLetter
     
     var baseURL: String {
-        "https://www.thecocktaildb.com"
+        "www.thecocktaildb.com"
     }
     
     var path: String {
@@ -20,11 +20,19 @@ enum ApiType {
         }
     }
     
-    var parameters: Parameters {
+    var parameterKeys: String {
         switch self {
-        case .fetchDrinksByName: return ["s": "a"]
-        case .fetchDrinksByLetter: return ["f": "a"]
+        case .fetchDrinksByName: return "s"
+        case .fetchDrinksByLetter: return "f"
         }
+    }
+    
+    var components: URLComponents  {
+        var components = URLComponents()
+        components.scheme = "https"
+        components.host = self.baseURL
+        components.path = self.path
+        return components
     }
     
     var fullPath: String {
@@ -39,22 +47,28 @@ enum ApiType {
 final class NetworkManager {
     static let shared = NetworkManager()
     
+    private let session = URLSession(configuration: .default)
+    
     private init () { }
     
-    public func getCocktails() -> DrinksList {
-        let urlPath = ApiType.fetchDrinksByLetter.fullPath
-        let params = ApiType.fetchDrinksByLetter.parameters
-        var drinksList = DrinksList()
-        AF.request(urlPath, parameters: params)
-            .validate(statusCode: 200..<300)
-            .responseDecodable(of: DrinksList.self) { response in
-                switch response.result {
-                case .success(let model):
-                    drinksList = model
-                case .failure(let error):
-                    print(error.localizedDescription)
-                }
-            }
-        return drinksList
+    public func getCocktails(for letter: String) async throws -> DrinksList {
+        var components = ApiType.fetchDrinksByLetter.components
+        components.queryItems = [
+            .init(
+                name: ApiType.fetchDrinksByLetter.parameterKeys,
+                value: letter
+            )
+        ]
+        guard let url = components.url else {
+            print("Couldn't create url from components. Returning empty array. Network Manager GetCocktails(for letter: String) method.")
+            return DrinksList()
+        }
+        print(url)
+        let (data, _) = try await session.data(from: url)
+        return try decode(from: data)
+    }
+    
+    private func decode<T: Decodable>(from data: Data) throws -> T {
+        try JSONDecoder().decode(T.self, from: data)
     }
 }
