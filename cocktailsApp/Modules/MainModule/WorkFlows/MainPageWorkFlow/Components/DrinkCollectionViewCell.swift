@@ -77,14 +77,14 @@ class DrinkCollectionViewCell: UICollectionViewCell {
             make.height.equalTo(drinkImageView.frame.size.height)
         }
         
-        self.contentView.addSubview(drinkNameLabel)
+        addSubview(drinkNameLabel)
         drinkNameLabel.snp.makeConstraints { make in
             make.top.equalTo(drinkImageView.snp.bottom).offset(20)
             make.left.equalToSuperview().offset(8)
             make.right.equalToSuperview().offset(-8)
         }
         
-        self.contentView.addSubview(buyDrinkButton)
+        addSubview(buyDrinkButton)
         buyDrinkButton.snp.makeConstraints { make in
             make.top.equalTo(drinkNameLabel.snp.bottom).offset(14)
             make.centerX.equalToSuperview()
