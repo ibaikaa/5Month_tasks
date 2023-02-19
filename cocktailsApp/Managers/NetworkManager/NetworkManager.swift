@@ -63,7 +63,7 @@ final class NetworkManager {
             print("Network Manager Error. URL is nil in getCocktailsWithLetter(_ letter: String)  method. Returning empty object.")
             return DrinksList()
         }
-        print("URL for letter \(letter) is: \(url)")
+        print("URL for letter \"\(letter)\" is: \(url)")
         let (data, _) =  try await session.data(from: url)
         return try decode(from: data)
     }
@@ -76,7 +76,7 @@ final class NetworkManager {
             print("Network Manager Error. URL is nil in getCocktailsWithName(_ name: String) method. Returning empty object.")
             return DrinksList()
         }
-        print("URL for name \(name) is: \(url)")
+        print("URL for name \"\(name)\" is: \(url)")
         let (data, _) =  try await session.data(from: url)
         return try decode(from: data)
     }
