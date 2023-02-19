@@ -34,14 +34,6 @@ enum ApiType {
         components.path = self.path
         return components
     }
-    
-    var fullPath: String {
-        switch self {
-        case .fetchDrinksByName: return baseURL + path
-        case .fetchDrinksByLetter: return baseURL + path
-        }
-    }
-    
 }
 
 final class NetworkManager {
@@ -51,24 +43,41 @@ final class NetworkManager {
     
     private init () { }
     
-    public func getCocktails(for letter: String) async throws -> DrinksList {
-        var components = ApiType.fetchDrinksByLetter.components
+    private func decode<T: Decodable>(from data: Data) throws -> T {
+        try JSONDecoder().decode(T.self, from: data)
+    }
+    
+    private func generateURLForApiType(_ apiType: ApiType, paramsValue: String) -> URL? {
+        var components = apiType.components
         components.queryItems = [
-            .init(
-                name: ApiType.fetchDrinksByLetter.parameterKeys,
-                value: letter
-            )
+            .init(name: apiType.parameterKeys, value: paramsValue)
         ]
-        guard let url = components.url else {
-            print("Couldn't create url from components. Returning empty array. Network Manager GetCocktails(for letter: String) method.")
+        return components.url
+    }
+    
+    public func getCocktailsWithLetter(_ letter: String) async throws -> DrinksList {
+        guard let url = generateURLForApiType(
+            .fetchDrinksByLetter,
+            paramsValue: letter
+        ) else {
+            print("Network Manager Error. URL is nil in getCocktailsWithLetter(_ letter: String)  method. Returning empty object.")
             return DrinksList()
         }
-        print(url)
-        let (data, _) = try await session.data(from: url)
+        print("URL for letter \(letter) is: \(url)")
+        let (data, _) =  try await session.data(from: url)
         return try decode(from: data)
     }
     
-    private func decode<T: Decodable>(from data: Data) throws -> T {
-        try JSONDecoder().decode(T.self, from: data)
+    public func getCocktailsWithName(_ name: String) async throws -> DrinksList {
+        guard let url = generateURLForApiType(
+            .fetchDrinksByName,
+            paramsValue: name
+        ) else {
+            print("Network Manager Error. URL is nil in getCocktailsWithName(_ name: String) method. Returning empty object.")
+            return DrinksList()
+        }
+        print("URL for name \(name) is: \(url)")
+        let (data, _) =  try await session.data(from: url)
+        return try decode(from: data)
     }
 }

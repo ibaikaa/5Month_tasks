@@ -13,8 +13,10 @@ struct DrinksList: Decodable {
 
 struct Drink: Decodable {
     let drinkName: String
+    let drinkImageURLPath: String
     
     enum CodingKeys: String, CodingKey {
         case drinkName = "strDrink"
+        case drinkImageURLPath = "strDrinkThumb"
     }
 }

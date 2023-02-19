@@ -23,6 +23,7 @@
 		8C4A0F7829A14DDA0008E663 /* MainTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C4A0F7729A14DDA0008E663 /* MainTabBarController.swift */; };
 		8C4A0F7C29A168620008E663 /* Drinks.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C4A0F7B29A168620008E663 /* Drinks.swift */; };
 		8C4A0F7E29A171090008E663 /* MainViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C4A0F7D29A171090008E663 /* MainViewModel.swift */; };
+		8C4A0F9329A2108F0008E663 /* DrinkCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C4A0F9229A2108F0008E663 /* DrinkCollectionViewCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -45,6 +46,7 @@
 		8C4A0F7729A14DDA0008E663 /* MainTabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTabBarController.swift; sourceTree = "<group>"; };
 		8C4A0F7B29A168620008E663 /* Drinks.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Drinks.swift; sourceTree = "<group>"; };
 		8C4A0F7D29A171090008E663 /* MainViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewModel.swift; sourceTree = "<group>"; };
+		8C4A0F9229A2108F0008E663 /* DrinkCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DrinkCollectionViewCell.swift; sourceTree = "<group>"; };
 		DA70607590BC910FB292027A /* Pods-cocktailsApp.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-cocktailsApp.debug.xcconfig"; path = "Target Support Files/Pods-cocktailsApp/Pods-cocktailsApp.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -195,9 +197,9 @@
 		8C4A0F5729A14BEC0008E663 /* MainPageWorkFlow */ = {
 			isa = PBXGroup;
 			children = (
-				8C4A0F6629A14C2B0008E663 /* ViewModel */,
-				8C4A0F6529A14C290008E663 /* View */,
 				8C4A0F6429A14C250008E663 /* Components */,
+				8C4A0F6529A14C290008E663 /* View */,
+				8C4A0F6629A14C2B0008E663 /* ViewModel */,
 			);
 			path = MainPageWorkFlow;
 			sourceTree = "<group>";
@@ -301,6 +303,7 @@
 		8C4A0F6429A14C250008E663 /* Components */ = {
 			isa = PBXGroup;
 			children = (
+				8C4A0F9229A2108F0008E663 /* DrinkCollectionViewCell.swift */,
 			);
 			path = Components;
 			sourceTree = "<group>";
@@ -501,6 +504,7 @@
 				8C4A0F6C29A14C7E0008E663 /* CartViewController.swift in Sources */,
 				8C4A0F7829A14DDA0008E663 /* MainTabBarController.swift in Sources */,
 				8C4A0F7C29A168620008E663 /* Drinks.swift in Sources */,
+				8C4A0F9329A2108F0008E663 /* DrinkCollectionViewCell.swift in Sources */,
 				8C4A0F6829A14C4F0008E663 /* ProfileViewController.swift in Sources */,
 				8C4A0F7329A14D0F0008E663 /* UIColorExtension.swift in Sources */,
 				8C4A0F3629A14AD70008E663 /* AppDelegate.swift in Sources */,

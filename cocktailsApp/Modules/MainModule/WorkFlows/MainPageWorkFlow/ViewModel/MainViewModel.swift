@@ -9,7 +9,7 @@ import Foundation
 
 protocol MainViewModelType {
     func getDrinksForLetter(_ letter: String) async throws -> DrinksList
-    func getDrinksByName(_ name: String) -> DrinksList
+    func getDrinksByName(_ name: String) async throws -> DrinksList
 }
 
 final public class MainViewModel: MainViewModelType {
@@ -18,11 +18,10 @@ final public class MainViewModel: MainViewModelType {
     init() { self.networkManager = NetworkManager.shared }
     
     func getDrinksForLetter(_ letter: String) async throws -> DrinksList {
-        try await networkManager.getCocktails(for: letter)
+        try await networkManager.getCocktailsWithLetter(letter)
     }
     
-    func getDrinksByName(_ name: String) -> DrinksList {
-//        NetworkManager.shared.getCocktails(for: name)
-        DrinksList()
+    func getDrinksByName(_ name: String) async throws -> DrinksList {
+        try await networkManager.getCocktailsWithName(name)
     }
 }
